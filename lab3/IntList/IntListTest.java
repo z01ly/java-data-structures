@@ -71,12 +71,13 @@ public class IntListTest {
       * example. */
 
 
-    @Test
+    @Test(timeout = 1000)
     public void testReverse() {
         IntList A = IntList.of(1, 2, 3);
-        IntList B = IntList.of(3, 2, 1);
-        assertEquals(A, IntList.reverse(B));
-        assertNotEquals(A, IntList.reverse(A));
+        // IntList B = IntList.of(3, 2, 1);
+        IntList C = IntList.reverse(A);
+        assertEquals(C, IntList.of(3, 2, 1));
+        assertNotEquals(IntList.of(1, 2, 3), A);
         assertEquals(IntList.reverse(null), null);
     }
 

@@ -119,13 +119,16 @@ public class IntList {
      * Reverse a list. May modify items of A.
      */
     public static IntList reverse(IntList A) {
-        if (A == null)
-            return null;
-
-        if (A.rest == null)
+        if (A == null || A.rest == null)
             return A;
 
-        return catenate(reverse(A.rest), new IntList(A.first, null));
+        // Non-destructive
+        // return catenate(reverse(A.rest), new IntList(A.first, null));
+
+        IntList reversed = reverse(A.rest);
+        A.rest.rest = A;
+        A.rest = null;
+        return reversed;
 
     }
 
